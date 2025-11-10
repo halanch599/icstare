@@ -1,0 +1,951 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=5.0" />
+    <title>
+        CCIDSA-2026 | 2nd International Conference on Cognitive Computing, Intelligence and Data Science Applications
+    </title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="2nd International Conference on Cognitive Computing, Intelligence and Data Science Applications | CCIDSA-2026" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <!-- CSS -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css" />
+    <!-- Animation -->
+    <link rel="stylesheet" href="assets/plugins/animate-css/animate.css" />
+    <!-- slick Carousel -->
+    <link rel="stylesheet" href="assets/plugins/slick/slick.css" />
+    <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css" />
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css" />
+    <!-- Template styles-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    
+</head>
+
+<body>
+    <div class="body-inner">
+        <div id="header-placeholder"></div>
+        <script>
+            // Load header.html first and display it before the rest of the page
+            document.addEventListener('DOMContentLoaded', function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'header.html', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById('header-placeholder').innerHTML = xhr.responseText;
+                        // Optionally, you can trigger other JS or show the rest of the page here
+                    }
+                };
+                xhr.send();
+            });
+        </script>
+
+        <section id="main-container" class="main-container">
+            <div id="welcome" class="container">
+                <div class="row">
+                    <!--  Left Column -->
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <div class="body-inner">
+                            <section id="main-container" class="main-container">
+                                <div class="container">
+                                    <div id="registeration" class="row">
+                                        <div class="col-12">
+                                            <h4 class="text-center section-sub-title">Certificates of Participation</h4>
+
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    const styleContent = `
+                                                    #myTable tr td a {
+                                                        text-decoration: underline;
+                                                        color: #0a5cae;
+                                                    }
+
+                                                    #documentPagination {
+                                                        display: flex;
+                                                        justify-content: left;
+                                                        margin-top: 20px;
+                                                    }
+
+                                                    .custom-pagination {
+                                                        display: flex;
+                                                        list-style: none;
+                                                        padding: 0;
+                                                    }
+
+                                                    .custom-pagination .page-item {
+                                                        margin-right: 4px;
+                                                    }
+
+                                                    .custom-pagination .page-link {
+                                                        width: 36px;
+                                                        height: 36px;
+                                                        text-align: center;
+                                                        line-height: 36px;
+                                                        border-radius: 4px;
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        background-color: #0056b3;
+                                                        color: white;
+                                                        border: 1px solid #007bff;
+                                                    }
+
+                                                    .custom-pagination .page-link:hover, .custom-pagination .page-link:focus {
+                                                        background-color: #007bff;
+                                                        color: white;
+                                                        text-decoration: none;
+                                                    }
+
+                                                    .search-container {
+                                                        margin-bottom: 20px;
+                                                    }
+
+                                                    #authorSearch {
+                                                        width: 100%;
+                                                        padding: 8px;
+                                                        margin: 10px 0;
+                                                        border-radius: 4px;
+                                                        border: 1px solid #ccc;
+                                                        font-size: 16px;
+                                                    }
+
+                                                    .table-row-even {
+                                                        background-color: #f9f9f9;
+                                                    }
+
+                                                    .table-row-odd {
+                                                        background-color: #ffffff;
+                                                    }
+                                                    `;
+
+                                                    // Create a <style> element
+                                                    const styleElement = document.createElement('style');
+                                                    styleElement.type = 'text/css';
+                                                    styleElement.appendChild(document.createTextNode(styleContent));
+
+                                                    // Append it to the <head> section
+                                                    document.head.appendChild(styleElement);
+                                                });
+                                            </script>
+
+
+                                            <div class="search-container">
+                                                <input type="text" id="authorSearch" placeholder="Search by author name." aria-label="Search Author">
+                                            </div>
+
+                                            <!-- Pagination Wrapper -->
+                                            <div aria-label="Document Pagination" id="documentPagination">
+                                                <ul class="pagination custom-pagination">
+                                                    <!-- Pagination links will be inserted here dynamically -->
+                                                </ul>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table id="myTable" class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Paper ID</th>
+                                                            <th>Author Name</th>
+                                                            <th>Download PDF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>ccidsa-2</td>
+                                                            <td>Yehia Alzoubi</td>
+                                                            <td><a href='certificates/2-Yehia Alzoubi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-7</td>
+                                                            <td>Ahmet Demir</td>
+                                                            <td><a href='certificates/7-Ahmet Demir.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-7</td>
+                                                            <td>Ataberk Najafi</td>
+                                                            <td><a href='certificates/7-Ataberk Najafi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-7</td>
+                                                            <td>Fausto Pedro García Márquez</td>
+                                                            <td><a href='certificates/7-Fausto Pedro García Márquez.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-7</td>
+                                                            <td>Hakan Acaroglu</td>
+                                                            <td><a href='certificates/7-Hakan Acaroglu.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-10</td>
+                                                            <td>Abdulkader Alwer</td>
+                                                            <td><a href='certificates/10-Abdulkader Alwer.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-10</td>
+                                                            <td>Cem Aydin</td>
+                                                            <td><a href='certificates/10-Cem Aydin.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-11</td>
+                                                            <td>Samet Gumus</td>
+                                                            <td><a href='certificates/11-Samet Gumus.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-12</td>
+                                                            <td>Ali Güneş</td>
+                                                            <td><a href='certificates/12-Ali Güneş.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-12</td>
+                                                            <td>Samet Gumus</td>
+                                                            <td><a href='certificates/12-Samet Gumus.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-14</td>
+                                                            <td>Ahmet Sayar</td>
+                                                            <td><a href='certificates/14-Ahmet Sayar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-17</td>
+                                                            <td>Ahmet Sayar</td>
+                                                            <td><a href='certificates/17-Ahmet Sayar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-17</td>
+                                                            <td>Muhammet Kurtbaş</td>
+                                                            <td><a href='certificates/17-Muhammet Kurtbaş.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-22</td>
+                                                            <td>Basma Iraqi</td>
+                                                            <td><a href='certificates/22-Basma Iraqi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-22</td>
+                                                            <td>Lamia Benhiba</td>
+                                                            <td><a href='certificates/22-Lamia Benhiba.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-22</td>
+                                                            <td>Mohammed Abdou Janati Idrissi</td>
+                                                            <td><a href='certificates/22-Mohammed Abdou Janati Idrissi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-24</td>
+                                                            <td>Mary Ann Valentino</td>
+                                                            <td><a href='certificates/24-Mary Ann Valentino.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-25</td>
+                                                            <td>Ma Cecilia Siva</td>
+                                                            <td><a href='certificates/25-Ma Cecilia Siva.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Doga Celme</td>
+                                                            <td><a href='certificates/26-Doga Celme.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Erman Eksi</td>
+                                                            <td><a href='certificates/26-Erman Eksi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Omer Faruk Tasdemir</td>
+                                                            <td><a href='certificates/26-Omer Faruk Tasdemir.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Samet Aycicek</td>
+                                                            <td><a href='certificates/26-Samet Aycicek.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Sibel Malkoş</td>
+                                                            <td><a href='certificates/26-Sibel Malkoş.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Tuncay Demirtas</td>
+                                                            <td><a href='certificates/26-Tuncay Demirtas.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-26</td>
+                                                            <td>Yigit Konuskan</td>
+                                                            <td><a href='certificates/26-Yigit Konuskan.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-28</td>
+                                                            <td>Geoffrey Sepillo</td>
+                                                            <td><a href='certificates/28-Geoffrey Sepillo.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-29</td>
+                                                            <td>Muhsin Jweeg Jweeg</td>
+                                                            <td><a href='certificates/29-Muhsin Jweeg Jweeg.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-31</td>
+                                                            <td>Samet Aycicek</td>
+                                                            <td><a href='certificates/31-Samet Aycicek.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-32</td>
+                                                            <td>Ali Shafique</td>
+                                                            <td><a href='certificates/32-Ali Shafique.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-32</td>
+                                                            <td>Arslan Saleem</td>
+                                                            <td><a href='certificates/32-Arslan Saleem.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-32</td>
+                                                            <td>Hazrat Bilal</td>
+                                                            <td><a href='certificates/32-Hazrat Bilal.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-32</td>
+                                                            <td>Malika Bendechache</td>
+                                                            <td><a href='certificates/32-Malika Bendechache.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-33</td>
+                                                            <td>Ibraheem Shayea</td>
+                                                            <td><a href='certificates/33-Ibraheem Shayea.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-33</td>
+                                                            <td>Meryem Uzun-Per</td>
+                                                            <td><a href='certificates/33-Meryem Uzun-Per.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-33</td>
+                                                            <td>Tuqa Rahman</td>
+                                                            <td><a href='certificates/33-Tuqa Rahman.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-34</td>
+                                                            <td>Al-Hadrayi Ziadoon</td>
+                                                            <td><a href='certificates/34-Al-Hadrayi Ziadoon.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-34</td>
+                                                            <td>Ehab Abbas</td>
+                                                            <td><a href='certificates/34-Ehab Abbas.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-34</td>
+                                                            <td>Emad Njim</td>
+                                                            <td><a href='certificates/34-Emad Njim.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-34</td>
+                                                            <td>Muhsin Jweeg</td>
+                                                            <td><a href='certificates/34-Muhsin Jweeg.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-35</td>
+                                                            <td>Kıvanç Kök</td>
+                                                            <td><a href='certificates/35-Kıvanç Kök.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-35</td>
+                                                            <td>Lütfü Hanoğlu</td>
+                                                            <td><a href='certificates/35-Lütfü Hanoğlu.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-35</td>
+                                                            <td>Melisa Eryaşar</td>
+                                                            <td><a href='certificates/35-Melisa Eryaşar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-36</td>
+                                                            <td>Ehab Abbas</td>
+                                                            <td><a href='certificates/36-Ehab Abbas.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-36</td>
+                                                            <td>Emad Njim</td>
+                                                            <td><a href='certificates/36-Emad Njim.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-36</td>
+                                                            <td>Firas Al-Maliky</td>
+                                                            <td><a href='certificates/36-Firas Al-Maliky.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-36</td>
+                                                            <td>Muhsin Jweeg</td>
+                                                            <td><a href='certificates/36-Muhsin Jweeg.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Ahmed Abdul Salam Abdul Razzaq Alubaidy</td>
+                                                            <td><a href='certificates/37-Ahmed Abdul Salam Abdul Razzaq Alubaidy.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Ahmed Hussein Ahmed</td>
+                                                            <td><a href='certificates/37-Ahmed Hussein Ahmed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Ali Kareem Najm Al-Asadi</td>
+                                                            <td><a href='certificates/37-Ali Kareem Najm Al-Asadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/37-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Meena Albaghdadi</td>
+                                                            <td><a href='certificates/37-Meena Albaghdadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-37</td>
+                                                            <td>Mustafa Kareem Najm Al-Asadi</td>
+                                                            <td><a href='certificates/37-Mustafa Kareem Najm Al-Asadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-38</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/38-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Ahmed Abdul Salam Abdul Razzaq Alubaidy</td>
+                                                            <td><a href='certificates/40-Ahmed Abdul Salam Abdul Razzaq Alubaidy.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Ahmed Hussein Ahmed</td>
+                                                            <td><a href='certificates/40-Ahmed Hussein Ahmed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Ali Kareem Najm Al-Asadi</td>
+                                                            <td><a href='certificates/40-Ali Kareem Najm Al-Asadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/40-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Meena Albaghdadi</td>
+                                                            <td><a href='certificates/40-Meena Albaghdadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-40</td>
+                                                            <td>Mustafa Kareem Najm Al-Asadi</td>
+                                                            <td><a href='certificates/40-Mustafa Kareem Najm Al-Asadi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-41</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/41-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-43</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/43-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-44</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/44-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-45</td>
+                                                            <td>Laith Jumma</td>
+                                                            <td><a href='certificates/45-Laith Jumma.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-47</td>
+                                                            <td>Sufian Al-Jumaili</td>
+                                                            <td><a href='certificates/47-Sufian Al-Jumaili.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-49</td>
+                                                            <td>Akhtar Jamil</td>
+                                                            <td><a href='certificates/49-Akhtar Jamil.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-49</td>
+                                                            <td>Deepika Kumar</td>
+                                                            <td><a href='certificates/49-Deepika Kumar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-49</td>
+                                                            <td>Vaijayanthi Sambath Kumar</td>
+                                                            <td><a href='certificates/49-Vaijayanthi Sambath Kumar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-50</td>
+                                                            <td>Adwaa Abdulmajeed</td>
+                                                            <td><a href='certificates/50-Adwaa Abdulmajeed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-50</td>
+                                                            <td>Emad Njim</td>
+                                                            <td><a href='certificates/50-Emad Njim.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-50</td>
+                                                            <td>Firas Al-Maliky</td>
+                                                            <td><a href='certificates/50-Firas Al-Maliky.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-50</td>
+                                                            <td>Muhsin Jweeg</td>
+                                                            <td><a href='certificates/50-Muhsin Jweeg.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-51</td>
+                                                            <td>Ahmed Noori Ahmed Algburi</td>
+                                                            <td><a href='certificates/51-Ahmed Noori Ahmed Algburi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-51</td>
+                                                            <td>Dr. İsa Avcı</td>
+                                                            <td><a href='certificates/51-Dr. İsa Avcı.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-53</td>
+                                                            <td>Hameed Farhan</td>
+                                                            <td><a href='certificates/53-Hameed Farhan.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-53</td>
+                                                            <td>Noor Kamil Hasan Alhmud</td>
+                                                            <td><a href='certificates/53-Noor Kamil Hasan Alhmud.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-53</td>
+                                                            <td>Raghda Awad Shaban Naseri</td>
+                                                            <td><a href='certificates/53-Raghda Awad Shaban Naseri.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-53</td>
+                                                            <td>Sefer Kurnaz</td>
+                                                            <td><a href='certificates/53-Sefer Kurnaz.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-54</td>
+                                                            <td>Ahlam Tabtaba</td>
+                                                            <td><a href='certificates/54-Ahlam Tabtaba.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-54</td>
+                                                            <td>Hameed Farhan</td>
+                                                            <td><a href='certificates/54-Hameed Farhan.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-54</td>
+                                                            <td>Oguz Ata</td>
+                                                            <td><a href='certificates/54-Oguz Ata.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-55</td>
+                                                            <td>Hameed Farhan</td>
+                                                            <td><a href='certificates/55-Hameed Farhan.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-55</td>
+                                                            <td>Raghda Awad Shaban Naseri</td>
+                                                            <td><a href='certificates/55-Raghda Awad Shaban Naseri.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-55</td>
+                                                            <td>Sefer Kurnaz</td>
+                                                            <td><a href='certificates/55-Sefer Kurnaz.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-55</td>
+                                                            <td>Taha Almshhed</td>
+                                                            <td><a href='certificates/55-Taha Almshhed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-56</td>
+                                                            <td>Akhtar Jamil</td>
+                                                            <td><a href='certificates/56-Akhtar Jamil.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-56</td>
+                                                            <td>Alaa Ali Hameed</td>
+                                                            <td><a href='certificates/56-Alaa Ali Hameed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-56</td>
+                                                            <td>Esraa Mohammed Alazzawi</td>
+                                                            <td><a href='certificates/56-Esraa Mohammed Alazzawi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-56</td>
+                                                            <td>Faezeh Soleimani</td>
+                                                            <td><a href='certificates/56-Faezeh Soleimani.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-56</td>
+                                                            <td>Ibrahim Abedrabbo</td>
+                                                            <td><a href='certificates/56-Ibrahim Abedrabbo.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Akhtar Jamil</td>
+                                                            <td><a href='certificates/57-Akhtar Jamil.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Akib Khanday</td>
+                                                            <td><a href='certificates/57-Akib Khanday.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Esraa Mohammed Alazzawi</td>
+                                                            <td><a href='certificates/57-Esraa Mohammed Alazzawi.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Mohd Asif Hajam</td>
+                                                            <td><a href='certificates/57-Mohd Asif Hajam.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Ravish Kumar Singh</td>
+                                                            <td><a href='certificates/57-Ravish Kumar Singh.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-57</td>
+                                                            <td>Tasleem Arif</td>
+                                                            <td><a href='certificates/57-Tasleem Arif.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-58</td>
+                                                            <td>Ahmed Faleh</td>
+                                                            <td><a href='certificates/58-Ahmed Faleh.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-58</td>
+                                                            <td>Sara Hazim</td>
+                                                            <td><a href='certificates/58-Sara Hazim.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-59</td>
+                                                            <td>Akhtar Jamil</td>
+                                                            <td><a href='certificates/59-Akhtar Jamil.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-59</td>
+                                                            <td>Alaa Ali Hameed</td>
+                                                            <td><a href='certificates/59-Alaa Ali Hameed.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-59</td>
+                                                            <td>Saad Farooq</td>
+                                                            <td><a href='certificates/59-Saad Farooq.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>ccidsa-59</td>
+                                                            <td>Umer Mukhtar</td>
+                                                            <td><a href='certificates/59-Umer Mukhtar.pdf' target='_blank'>Download</a></td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <script>
+                                                $(document).ready(function () {
+                                                    const numItemsPerPage = 50;
+                                                    const $tableBody = $('#myTable tbody');
+                                                    const $pagination = $('#documentPagination .custom-pagination');
+                                                    const numItems = $tableBody.find('tr').length;
+                                                    const numPages = Math.ceil(numItems / numItemsPerPage);
+
+                                                    function showPage(pageNum) {
+                                                        const startItem = (pageNum - 1) * numItemsPerPage;
+                                                        const endItem = startItem + numItemsPerPage;
+                                                        $tableBody.find('tr').hide().slice(startItem, endItem).show();
+                                                    }
+
+                                                    showPage(1);
+
+                                                    for (let i = 1; i <= numPages; i++) {
+                                                        const $li = $('<li class="page-item"></li>');
+                                                        const $a = $('<a class="page-link" href="#">' + i + '</a>').on('click', function (e) {
+                                                            e.preventDefault();
+                                                            showPage(i);
+                                                            $pagination.find('.page-item').removeClass('active');
+                                                            $li.addClass('active');
+                                                        });
+                                                        $li.append($a);
+                                                        $pagination.append($li);
+                                                    }
+
+                                                    $pagination.find('li:first-child').addClass('active');
+
+                                                    $("#authorSearch").on("keyup", function () {
+                                                        const value = $(this).val().toLowerCase();
+                                                        const $rows = $("#myTable tbody tr");
+
+                                                        // Filter rows based on search input
+                                                        $rows.each(function () {
+                                                            const isVisible = $(this).text().toLowerCase().indexOf(value) > -1;
+                                                            $(this).toggle(isVisible);
+                                                        });
+
+                                                        // Reapply alternating row colors for visible rows
+                                                        $("#myTable tbody tr:visible").each(function (index) {
+                                                            // Remove existing classes
+                                                            $(this).removeClass("table-row-odd table-row-even");
+                                                            // Add appropriate class based on index
+                                                            $(this).addClass(index % 2 === 0 ? "table-row-even" : "table-row-odd");
+                                                        });
+                                                    });
+
+                                                });
+                                            </script>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Container end -->
+                            </section>
+                            <!-- Main container end -->
+
+                        </div>
+                    </div>
+
+                    <!-- Right Col -->
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+
+                            <div class="sidebar sidebar-right mt-4">
+                                <!-- Categories end -->
+                                <div class="widget">
+                                    <h3 class="widget-title">Bosphorus Istanbul Tour</h3>
+                                    <ul class="arrow nav nav-tabs">
+                                        <li>
+                                            <a href="#" target="_blank"><img class="img-fluid rounded" width="100%" src="assets/img/bosphorous.jpg" /></a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="widget widget-tags">
+                                    <h3 class="widget-title">Quick Links </h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="author.html">Call for Paper</a></li>
+                                        <li><a href="author.html#registration">Registration</a></li>
+                                        <li><a href="industry.html">Industry Sessions</a></li>
+                                        <li><a href="topics.html">Topics of Interest</a></li>
+                                        <li><a href="index.html#organizers">Organizers</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Tags end -->
+
+
+                            </div>
+                            <!-- Sidebar end -->
+                        </div>
+                        <!-- Sidebar Col end -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    <!-- Body inner end -->
+
+
+    <footer id="footer" class="footer bg-overlay">
+        <div class="copyright">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="copyright-info text-center text-md-left">
+                            <span>
+                                Copyright &copy;
+
+                                <script>document.write(new Date().getFullYear())</script>
+                                , CCIDSA-2026
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="footer-menu text-center text-md-right">
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">About</a></li>
+                                <li><a href="author.html#submission">Submission</a></li>
+                                <li><a href="author.html#registration">Registration</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row end -->
+
+                <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
+                    <button class="btn btn-primary" title="Back to Top">
+                        <i class="fa fa-angle-double-up"></i>
+                    </button>
+                </div>
+
+            </div>
+            <!-- Container end -->
+        </div>
+        <!-- Copyright end -->
+    </footer>
+
+
+    <!-- Javascript Files -->
+    <!-- initialize jQuery Library -->
+    <script src="assets/plugins/jQuery/jquery.min.js"></script>
+    <!-- Bootstrap jQuery -->
+    <script src="assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+    <!-- Slick Carousel -->
+    <script src="assets/plugins/slick/slick.min.js"></script>
+    <script src="assets/plugins/slick/slick-animation.min.js"></script>
+    <!-- Color box -->
+    <script src="assets/plugins/colorbox/jquery.colorbox.js"></script>
+    <!-- shuffle -->
+    <script src="assets/plugins/shuffle/shuffle.min.js" defer></script>
+
+
+    <!-- Google Map API Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+    <!-- Google Map Plugin-->
+    <script src="assets/plugins/google-map/map.js" defer></script>
+
+    <!-- Template custom -->
+    <script src="assets/js/script.js"></script>
+   
+</body>
+</html>
